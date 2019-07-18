@@ -1,0 +1,86 @@
+﻿@model List<TestData1>
+@{
+    var dataTable = OfficeHelper.ToDatatable(Model, new Dictionary<string, System.Linq.Expressions.Expression<Func<TestData1, object>>> {
+{ "Id",it=>it.Id },
+{ "Name",it=>it.Name },
+{ "Time",it=>it.Time}
+});
+
+}
+<table class="table">
+    <thead>
+        <tr>
+            @foreach (DataColumn col in dataTable.Columns)
+            {
+                <th scope="col">@col.ColumnName</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow row in dataTable.Rows)
+        {
+            <tr>
+                @foreach (DataColumn col in dataTable.Columns)
+                {
+                    <td>@row[col]</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a class="btn btn-primary" asp-action="ExportXlsx" target="_blank">导出.xlsx</a>
+</div>
+<hr />
+<div>
+    <form asp-action="ImportXlsx" enctype="multipart/form-data">
+        <label for="import">导入Excel</label>
+        <input type="file" id="import" name="import">
+
+        <button class="btn btn-success" target="_blank" type="submit">导入Excel</button>
+    </form>
+
+    <p>直接将上面导出的文件结构不变只改数据上传即可</p>
+</div>
+<div>
+    @{
+        if (ViewBag.testData1List != null)
+        {
+            var successCount = (int)ViewBag.successCount;
+            var messageList = (List<string>)ViewBag.messageList;
+            var testData1List = (List<TestData1>)ViewBag.testData1List;
+
+            if (messageList != null && messageList.Count > 0)
+            {
+                foreach (var item in messageList)
+                {
+                    <p>@item</p>
+                }
+            }
+
+            if (testData1List != null && testData1List.Count > 0)
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in testData1List)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>@item.Time</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            }
+        }
+    }
+</div>

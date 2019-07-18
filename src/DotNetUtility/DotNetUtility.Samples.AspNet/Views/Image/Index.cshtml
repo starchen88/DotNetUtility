@@ -1,0 +1,73 @@
+﻿<h1>Image处理工具</h1>
+<hr />
+<h2>生成缩略图</h2>
+<h3>原始图像（512x512）</h3>
+<p>
+    <img src="~/Content/images/lena_std.tif" alt="Alternate Text" />
+</p>
+<p>速览对比：</p>
+<div>
+    <div class="thumbnail" style="display:inline-block;">
+        <img src="@Url.Action("Thumbnail",new { url=Url.Content("~/Content/images/lena_std.tif"),width=200,height=150})" />
+        <span>
+            直接缩放（200x150）
+        </span>
+    </div>
+    <div class="thumbnail" style="display:inline-block;">
+        <img src="@Url.Action("Thumbnail",new { url=Url.Content("~/Content/images/lena_std.tif"),width=200,height=150,mode="cut"})" />
+        <span>
+            缩放并裁剪（200x150）
+        </span>
+    </div>
+    <div class="thumbnail" style="display:inline-block;">
+        <img src="@Url.Action("Thumbnail",new { url=Url.Content("~/Content/images/lena_std.tif"),width=200,height=150,mode="padding"})" />
+        <span>
+            缩放并留白（200x150）
+        </span>
+    </div>
+</div>
+<h3>直接缩放，按指定尺寸直接缩放，非等比例</h3>
+<div class="row">
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="@Url.Action("Thumbnail",new { url=Url.Content("~/Content/images/lena_std.tif"),width=100,height=75})" />
+        <p>直接缩放（100x75）</p>
+    </div>
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="@Url.Action("Thumbnail",new { url=Url.Content("~/Content/images/lena_std.tif"),width=200,height=150})" />
+        <p>直接缩放（200x150）</p>
+    </div>
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="@Url.Action("Thumbnail",new { url=Url.Content("~/Content/images/lena_std.tif"),width=400,height=300})" />
+        <p>直接缩放（400x300）</p>
+    </div>
+</div>
+<h3>缩放并裁剪，按指定尺寸等比例缩放，以比例更接近一边为据裁剪另一边</h3>
+<div class="row">
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="@Url.Action("Thumbnail",new { url=Url.Content("~/Content/images/lena_std.tif"),width=100,height=75,mode="cut"})" />
+        <p>缩放并裁剪（100x75）</p>
+    </div>
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="@Url.Action("Thumbnail",new { url=Url.Content("~/Content/images/lena_std.tif"),width=200,height=150,mode="cut"})" />
+        <p>缩放并裁剪（200x150）</p>
+    </div>
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="@Url.Action("Thumbnail",new { url=Url.Content("~/Content/images/lena_std.tif"),width=400,height=300,mode="cut"})" />
+        <p>缩放并裁剪（400x300）</p>
+    </div>
+</div>
+<h3>缩放并留白，按指定尺寸等比例缩放，以比例更远一边为据填充另一边</h3>
+<div class="row">
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="@Url.Action("Thumbnail",new { url=Url.Content("~/Content/images/lena_std.tif"),width=100,height=75,mode="padding"})" />
+        <p>缩放并留白（100x75）</p>
+    </div>
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="@Url.Action("Thumbnail",new { url=Url.Content("~/Content/images/lena_std.tif"),width=200,height=150,mode="padding"})" />
+        <p>缩放并留白（200x150）</p>
+    </div>
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="@Url.Action("Thumbnail",new { url=Url.Content("~/Content/images/lena_std.tif"),width=400,height=300,mode="padding"})" />
+        <p>缩放并留白（400x300）</p>
+    </div>
+</div>

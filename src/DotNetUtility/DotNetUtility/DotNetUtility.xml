@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DotNetUtility</name>
+    </assembly>
+    <members>
+        <member name="T:DotNetUtility.ImageHelper">
+            <summary>
+            基于GDI+的图像处理帮助类
+            </summary>
+        </member>
+        <member name="M:DotNetUtility.ImageHelper.CreateThumbnail(System.Drawing.Bitmap,System.Int32,System.Int32,System.Drawing.Drawing2D.InterpolationMode)">
+            <summary>
+            创建非等比例缩放图
+            </summary>
+            <param name="oldImage">原始图</param>
+            <param name="newWidth">宽度，必须大于0</param>
+            <param name="newHeight">高度，必须大于0</param>
+            <param name="interpolationMode">缩放算法</param>
+            <returns>生成的缩放图</returns>
+        </member>
+        <member name="M:DotNetUtility.ImageHelper.CreateThumbnailWithPadding(System.Drawing.Bitmap,System.Int32,System.Int32,System.Drawing.Drawing2D.InterpolationMode)">
+            <summary>
+            创建等比例缩放图，以比例更远一边为据填充另一边
+            </summary>
+            <param name="oldImage">原始图</param>
+            <param name="newWidth">宽度，必须大于0</param>
+            <param name="newHeight">高度，必须大于0</param>
+            <param name="interpolationMode">缩放算法</param>
+            <returns>生成的缩放图</returns>
+        </member>
+        <member name="M:DotNetUtility.ImageHelper.CreateThumbnailWithPadding(System.Drawing.Bitmap,System.Int32,System.Int32,System.Drawing.Color,System.Drawing.Drawing2D.InterpolationMode)">
+            <summary>
+            创建等比例缩放图，以比例更远一边为据填充另一边
+            </summary>
+            <param name="oldImage">原始图</param>
+            <param name="newWidth">宽度，必须大于0</param>
+            <param name="newHeight">高度，必须大于0</param>
+            <param name="paddingColor">填充颜色</param>
+            <param name="interpolationMode">缩放算法</param>
+            <returns>生成的缩放图</returns>
+        </member>
+        <member name="M:DotNetUtility.ImageHelper.CreateThumbnailWithCut(System.Drawing.Bitmap,System.Int32,System.Int32,System.Drawing.Drawing2D.InterpolationMode)">
+            <summary>
+            创建等比例缩放图，以比例更接近一边为据裁剪另一边
+            </summary>
+            <param name="oldImage">原始图</param>
+            <param name="newWidth">宽度，必须大于0</param>
+            <param name="newHeight">高度，必须大于0</param>
+            <param name="interpolationMode">缩放算法</param>
+            <returns>生成的缩放图</returns>
+        </member>
+        <member name="M:DotNetUtility.ImageHelper.SaveAsJpeg(System.Drawing.Bitmap,System.Int32,System.IO.Stream)">
+            <summary>
+            保存Bitmap为jpeg到Stream
+            </summary>
+            <param name="bitmap">原始图</param>
+            <param name="quality">压缩质量</param>
+            <param name="stream">保存到的Stream</param>
+        </member>
+        <member name="M:DotNetUtility.ImageHelper.SaveAsJpeg(System.Drawing.Bitmap,System.Int32,System.String)">
+            <summary>
+            保存Bitmap为jpeg到文件
+            </summary>
+            <param name="bitmap">原始图</param>
+            <param name="quality">压缩质量</param>
+            <param name="filename">保存到的文件路径</param>
+        </member>
+        <member name="F:DotNetUtility.ExcelFormat.Xls">
+            <summary>
+            Excel 97-2003格式
+            </summary>
+        </member>
+        <member name="F:DotNetUtility.ExcelFormat.Xlsx">
+            <summary>
+            Excel 2007格式
+            </summary>
+        </member>
+        <member name="T:DotNetUtility.OfficeHelper">
+            <summary>
+            Office操作类
+            </summary>
+        </member>
+        <member name="M:DotNetUtility.OfficeHelper.ToDatatable``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.Dictionary{System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Object}}})">
+            <summary>
+            基于表达式规则将IEnumerable<typeparamref name="T"/>转换为DataTable
+            请注意，这没有使用反射之类的自动化方式，需要你自行提供转换策略
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="mapExp">表示转换策略的表达式字典，key为列名，value为获取值的Lambda表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNetUtility.OfficeHelper.ConvertFromDatatable``1(System.Data.DataTable,System.Collections.Generic.Dictionary{System.String,System.Func{``0,System.Object,System.Data.DataRow,System.Boolean}})">
+            <summary>
+            从DataTable导入数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="table"></param>
+            <param name="convertFuncDic">包含各字段映射规则的字典，key为字段名，value为转换逻辑，返回true表示转换成功、false表示转换失败</param>
+            <returns>返回值包含转换成功/失败状态，转换失败的消息和转换成功的数据</returns>
+        </member>
+        <member name="P:DotNetUtility.ConvertFromDatatableResult`1.Data">
+            <summary>
+            转换成功的数据
+            </summary>
+        </member>
+        <member name="P:DotNetUtility.ConvertFromDatatableResult`1.IsSuccess">
+            <summary>
+            转换成功
+            </summary>
+        </member>
+        <member name="P:DotNetUtility.ConvertFromDatatableResult`1.Message">
+            <summary>
+            转换失败的消息提示
+            </summary>
+        </member>
+    </members>
+</doc>
